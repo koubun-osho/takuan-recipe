@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蓮城院のたくあん — レシピ＆おいしい食べ方</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ━━━ リセット・基本 ━━━ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --washi: #F5EFD8;
+      --washi-dark: #EDE4C8;
+      --sumi: #1C1C1C;
+      --sumi-light: #3A3A3A;
+      --yamabuki: #DFA800;
+      --yamabuki-light: #F5D560;
+      --yamabuki-pale: #FFF8E0;
+      --midori: #4A6741;
+      --midori-light: #6B8F60;
+      --accent-red: #C85A4A;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--washi);
+      color: var(--sumi);
+      line-height: 1.8;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    /* ━━━ 和紙テクスチャ背景 ━━━ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(223,168,0,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 90%, rgba(74,103,65,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ━━━ ヘッダー ━━━ */
+    .header {
+      text-align: center;
+      padding: 48px 20px 36px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--yamabuki-pale) 0%, var(--washi) 100%);
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--yamabuki), transparent);
+    }
+
+    .header-crest {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 12px;
+      opacity: 0.35;
+    }
+
+    .header-crest img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .header-brand {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: var(--midori);
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .header-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--sumi);
+      letter-spacing: 0.15em;
+      line-height: 1.3;
+    }
+
+
+    .header-sub {
+      font-size: 12px;
+      color: var(--sumi-light);
+      letter-spacing: 0.2em;
+      margin-top: 8px;
+      font-weight: 300;
+    }
+
+    /* ━━━ 装飾ライン ━━━ */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 0;
+      padding: 0 20px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--yamabuki), transparent);
+      max-width: 120px;
+    }
+
+    .divider-icon {
+      font-size: 10px;
+      color: var(--yamabuki);
+      opacity: 0.6;
+    }
+
+    /* ━━━ セクション共通 ━━━ */
+    .section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .section-icon {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--sumi);
+      letter-spacing: 0.12em;
+    }
+
+    .section-subtitle {
+      font-size: 11px;
+      color: var(--midori);
+      letter-spacing: 0.3em;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    /* ━━━ 塩抜き方法 ━━━ */
+    .shionuki-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--yamabuki);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .shionuki-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--sumi);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .shionuki-card h3 .tag {
+      display: inline-block;
+      background: var(--yamabuki);
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 500;
+      vertical-align: middle;
+      margin-right: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .step-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .step-list li {
+      counter-increment: step;
+      padding: 6px 0 6px 36px;
+      position: relative;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 24px;
+      height: 24px;
+      background: var(--yamabuki-pale);
+      border: 1.5px solid var(--yamabuki);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--yamabuki);
+      line-height: 1;
+      text-align: center;
+    }
+
+    .tip-box {
+      background: var(--yamabuki-pale);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-top: 16px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .tip-box .tip-label {
+      font-weight: 500;
+      color: var(--yamabuki);
+      margin-right: 4px;
+    }
+
+    /* ━━━ レシピカード（折りたたみ） ━━━ */
+    .recipe-card {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+
+    .recipe-card summary {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      cursor: pointer;
+      list-style: none;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+
+    .recipe-card summary::-webkit-details-marker { display: none; }
+
+    .recipe-card summary:hover {
+      background: var(--yamabuki-pale);
+    }
+
+    .recipe-card[open] summary {
+      border-bottom: 1px solid #f0ead0;
+    }
+
+    .recipe-num {
+      width: 32px;
+      height: 32px;
+      background: var(--midori);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .recipe-summary-text {
+      flex: 1;
+    }
+
+    .recipe-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--sumi);
+      letter-spacing: 0.04em;
+    }
+
+    .recipe-tagline {
+      font-size: 12px;
+      color: var(--midori-light);
+      margin-top: 1px;
+    }
+
+    .recipe-arrow {
+      color: var(--yamabuki);
+      font-size: 12px;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .recipe-card[open] .recipe-arrow {
+      transform: rotate(90deg);
+    }
+
+    .recipe-body {
+      padding: 16px 20px 20px;
+    }
+
+    .recipe-body h4 {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--midori);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      margin-top: 12px;
+    }
+
+    .recipe-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .recipe-body ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .recipe-body ul li {
+      font-size: 14px;
+      padding: 2px 0 2px 16px;
+      position: relative;
+    }
+
+    .recipe-body ul li::before {
+      content: '・';
+      position: absolute;
+      left: 0;
+      color: var(--yamabuki);
+    }
+
+    .recipe-body ol {
+      padding-left: 20px;
+    }
+
+    .recipe-body ol li {
+      font-size: 14px;
+      padding: 3px 0;
+      line-height: 1.7;
+    }
+
+    .recipe-point {
+      background: #f0f7ee;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--midori);
+      line-height: 1.6;
+    }
+
+    .recipe-point::before {
+      content: '💡 ';
+    }
+
+    /* ━━━ 豆知識 ━━━ */
+    .trivia-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .trivia-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--sumi);
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    .trivia-card p {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #f9f5e8, #f0ead0);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border: 1px solid var(--yamabuki);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .highlight-box h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--sumi);
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    .highlight-box p {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* ━━━ フッター ━━━ */
+    .footer {
+      text-align: center;
+      padding: 32px 20px 48px;
+      background: linear-gradient(180deg, var(--washi) 0%, var(--washi-dark) 100%);
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--yamabuki), transparent);
+    }
+
+    .footer-crest {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 10px;
+      opacity: 0.25;
+    }
+
+    .footer-crest img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .footer-temple {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      color: var(--sumi-light);
+      letter-spacing: 0.2em;
+      font-weight: 400;
+    }
+
+    .footer-address {
+      font-size: 11px;
+      color: #888;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    .footer-event {
+      font-size: 11px;
+      color: var(--yamabuki);
+      letter-spacing: 0.15em;
+      margin-top: 12px;
+      font-weight: 400;
+    }
+
+    /* ━━━ レスポンシブ ━━━ */
+    @media (min-width: 640px) {
+      .section {
+        padding: 40px 32px;
+      }
+      .header {
+        padding: 56px 32px 44px;
+      }
+      .header-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ━━━ ヘッダー ━━━ -->
+  <header class="header">
+    <div class="header-crest">
+      <img src="images/蓮城院ロゴ1_背景透過.png" alt="蓮城院 寺紋" onerror="this.parentElement.style.display='none'">
+    </div>
+    <div class="header-brand">曹洞宗　蓮城院</div>
+    <h1 class="header-title">蓮城院のたくあん</h1>
+    <p class="header-sub">— レシピ＆おいしい食べ方ガイド —</p>
+  </header>
+
+  <!-- ━━━ ご挨拶 ━━━ -->
+  <section class="section">
+    <div class="highlight-box">
+      <h3>お手にとっていただき、ありがとうございます</h3>
+      <p>
+        蓮城院の境内で、昔ながらの製法で手作りしたたくあんです。<br>
+        素朴な味わいをお楽しみいただけましたら幸いです。<br>
+        このページでは、おいしい食べ方やアレンジレシピをご紹介いたします。
+      </p>
+    </div>
+  </section>
+
+  <!-- ━━━ 装飾ライン ━━━ -->
+  <div class="divider">
+    <span class="divider-line"></span>
+    <span class="divider-icon">◆</span>
+    <span class="divider-line"></span>
+  </div>
+
+  <!-- ━━━ 塩抜き方法 ━━━ -->
+  <section class="section" id="shionuki">
+    <div class="section-header">
+      <div class="section-title">塩抜きの方法</div>
+      <div class="section-subtitle">HOW TO DESALT</div>
+    </div>
+
+    <div class="shionuki-card">
+      <h3><span class="tag">基本</span>水に浸す方法</h3>
+      <ol class="step-list">
+        <li>たくあんを食べやすい大きさに切ります（薄切りにすると早く塩が抜けます）。</li>
+        <li>ボウルにたっぷりの水を入れ、切ったたくあんを浸します。</li>
+        <li><strong>30分〜2時間</strong>ほど置き、途中で味見をしてお好みの塩加減に調整します。</li>
+        <li>水気をしっかり絞ってから、お召し上がりください。</li>
+      </ol>
+    </div>
+
+    <div class="shionuki-card">
+      <h3><span class="tag">時短</span>薄い塩水を使う方法</h3>
+      <ol class="step-list">
+        <li>水500mlに対して小さじ1/2ほどの塩を溶かし、<strong>薄い塩水</strong>を作ります。</li>
+        <li>切ったたくあんを薄い塩水に浸します。</li>
+        <li><strong>20分〜1時間</strong>ほどで、均一に塩が抜けます。</li>
+      </ol>
+      <div class="tip-box">
+        <span class="tip-label">なぜ塩水？</span>
+        真水だと表面だけ急に塩が抜けて中は塩辛いままになりがちです。薄い塩水を使うと、浸透圧の差がゆるやかになり、中まで均一に塩抜きできます。
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <span class="tip-label">コツ</span>
+      浸しすぎると水っぽくなり、たくあん本来の風味が失われます。こまめに味見をして、少し塩気が残るくらいで引き上げるのがおすすめです。
+    </div>
+  </section>
+
+  <!-- ━━━ 装飾ライン ━━━ -->
+  <div class="divider">
+    <span class="divider-line"></span>
+    <span class="divider-icon">◆</span>
+    <span class="divider-line"></span>
+  </div>
+
+  <!-- ━━━ レシピ集 ━━━ -->
+  <section class="section" id="recipe">
+    <div class="section-header">
+      <div class="section-title">たくあんレシピ集</div>
+      <div class="section-subtitle">TAKUAN RECIPES</div>
+    </div>
+
+    <!-- レシピ1: たくあんチャーハン -->
+    <details class="recipe-card">
+      <summary>
+        <span class="recipe-num">1</span>
+        <div class="recipe-summary-text">
+          <div class="recipe-name">たくあんチャーハン</div>
+          <div class="recipe-tagline">ポリポリ食感がやみつきの定番</div>
+        </div>
+        <span class="recipe-arrow">▶</span>
+      </summary>
+      <div class="recipe-body">
+        <h4>材料（2人分）</h4>
+        <ul>
+          <li>ご飯 … 茶碗2杯分</li>
+          <li>たくあん（みじん切り）… 60g</li>
+          <li>卵 … 2個</li>
+          <li>長ねぎ（みじん切り）… 1/3本</li>
+          <li>ごま油 … 大さじ1</li>
+          <li>醤油 … 小さじ1</li>
+          <li>塩・こしょう … 少々</li>
+        </ul>
+        <h4>作り方</h4>
+        <ol>
+          <li>フライパンにごま油を熱し、溶き卵を入れてさっと炒める。</li>
+          <li>半熟のうちにご飯を加え、強火でパラパラになるまで炒める。</li>
+          <li>たくあんとねぎを加えてさっと炒め合わせる。</li>
+          <li>醤油を鍋肌から回し入れ、塩・こしょうで味を調えて完成。</li>
+        </ol>
+        <div class="recipe-point">たくあんに塩気があるので、醤油と塩は控えめに。塩抜きなしでもOKです。</div>
+      </div>
+    </details>
+
+    <!-- レシピ2: たくあんの天ぷら -->
+    <details class="recipe-card">
+      <summary>
+        <span class="recipe-num">2</span>
+        <div class="recipe-summary-text">
+          <div class="recipe-name">たくあんの天ぷら</div>
+          <div class="recipe-tagline">サクサク×ポリポリの新食感</div>
+        </div>
+        <span class="recipe-arrow">▶</span>
+      </summary>
+      <div class="recipe-body">
+        <h4>材料</h4>
+        <ul>
+          <li>たくあん（8mm厚の輪切り）… 8枚</li>
+          <li>天ぷら粉 … 50g</li>
+          <li>冷水 … 80ml</li>
+          <li>揚げ油 … 適量</li>
+        </ul>
+        <h4>作り方</h4>
+        <ol>
+          <li>たくあんを軽く塩抜きして、キッチンペーパーで水気をしっかり拭く。</li>
+          <li>天ぷら粉を冷水で溶いて衣を作る。</li>
+          <li>たくあんに衣をつけ、170℃の油でカラッと揚げる（約2分）。</li>
+          <li>お好みで天つゆや塩でどうぞ。</li>
+        </ol>
+        <div class="recipe-point">外はサクサク、中はポリポリ。お酒のおつまみにもぴったりです。</div>
+      </div>
+    </details>
+
+    <!-- レシピ3: たくあんタルタルソース -->
+    <details class="recipe-card">
+      <summary>
+        <span class="recipe-num">3</span>
+        <div class="recipe-summary-text">
+          <div class="recipe-name">たくあんタルタルソース</div>
+          <div class="recipe-tagline">ピクルスの代わりに和風アレンジ</div>
+        </div>
+        <span class="recipe-arrow">▶</span>
+      </summary>
+      <div class="recipe-body">
+        <h4>材料</h4>
+        <ul>
+          <li>たくあん（みじん切り）… 40g</li>
+          <li>ゆで卵 … 2個</li>
+          <li>マヨネーズ … 大さじ3</li>
+          <li>パセリ（みじん切り）… 少々</li>
+          <li>レモン汁 … 小さじ1</li>
+        </ul>
+        <h4>作り方</h4>
+        <ol>
+          <li>ゆで卵をフォークで粗くつぶす。</li>
+          <li>みじん切りにしたたくあん、マヨネーズ、パセリ、レモン汁を加えて混ぜる。</li>
+          <li>フライやチキン南蛮にたっぷりかけてどうぞ。</li>
+        </ol>
+        <div class="recipe-point">ピクルスの代わりにたくあんを使うことで、コリコリとした食感と独特の風味が加わります。</div>
+      </div>
+    </details>
+
+    <!-- レシピ4: たくあんとクリームチーズの和え物 -->
+    <details class="recipe-card">
+      <summary>
+        <span class="recipe-num">4</span>
+        <div class="recipe-summary-text">
+          <div class="recipe-name">たくあんとクリームチーズの和え物</div>
+          <div class="recipe-tagline">混ぜるだけ、日本酒にもワインにも</div>
+        </div>
+        <span class="recipe-arrow">▶</span>
+      </summary>
+      <div class="recipe-body">
+        <h4>材料</h4>
+        <ul>
+          <li>たくあん（細切り）… 50g</li>
+          <li>クリームチーズ … 50g</li>
+          <li>かつお節 … ひとつかみ</li>
+          <li>醤油 … 少々</li>
+          <li>お好みで大葉の千切り</li>
+        </ul>
+        <h4>作り方</h4>
+        <ol>
+          <li>クリームチーズを1cm角に切り、室温に少し戻しておく。</li>
+          <li>細切りにしたたくあんと合わせ、かつお節をまぶす。</li>
+          <li>醤油をほんの少したらして和えれば完成。</li>
+        </ol>
+        <div class="recipe-point">切って混ぜるだけの簡単おつまみ。クリームチーズのコクとたくあんの歯ごたえが絶妙です。</div>
+      </div>
+    </details>
+
+    <!-- レシピ5: たくあんの卵焼き -->
+    <details class="recipe-card">
+      <summary>
+        <span class="recipe-num">5</span>
+        <div class="recipe-summary-text">
+          <div class="recipe-name">たくあんの卵焼き</div>
+          <div class="recipe-tagline">お弁当にもぴったりの彩りおかず</div>
+        </div>
+        <span class="recipe-arrow">▶</span>
+      </summary>
+      <div class="recipe-body">
+        <h4>材料</h4>
+        <ul>
+          <li>たくあん（みじん切り）… 30g</li>
+          <li>卵 … 3個</li>
+          <li>砂糖 … 小さじ1</li>
+          <li>だし汁 … 大さじ1</li>
+          <li>サラダ油 … 適量</li>
+        </ul>
+        <h4>作り方</h4>
+        <ol>
+          <li>卵を溶きほぐし、砂糖・だし汁・たくあんのみじん切りを混ぜる。</li>
+          <li>卵焼き器に薄く油をひき、卵液を3回に分けて流し入れ、巻いていく。</li>
+          <li>粗熱が取れたら食べやすい大きさに切って完成。</li>
+        </ol>
+        <div class="recipe-point">たくあんの黄色が断面に映えて、お弁当が華やかに。食感のアクセントにもなります。</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ━━━ 装飾ライン ━━━ -->
+  <div class="divider">
+    <span class="divider-line"></span>
+    <span class="divider-icon">◆</span>
+    <span class="divider-line"></span>
+  </div>
+
+  <!-- ━━━ 豆知識 ━━━ -->
+  <section class="section" id="trivia">
+    <div class="section-header">
+      <div class="section-title">たくあん豆知識</div>
+      <div class="section-subtitle">GOOD TO KNOW</div>
+    </div>
+
+    <div class="trivia-card">
+      <h3>保存方法</h3>
+      <p>
+        開封後は<strong>ラップでぴったりと包み、冷蔵庫</strong>で保存してください。<br>
+        空気に触れると風味が落ちやすくなります。<br>
+        冷蔵保存で<strong>約2〜3週間</strong>が目安です。お早めにお召し上がりください。
+      </p>
+    </div>
+
+    <div class="highlight-box">
+      <h3>「たくあん」と曹洞宗のご縁</h3>
+      <p>
+        たくあん漬けの名前の由来には諸説ありますが、江戸時代の曹洞宗の高僧・<strong>沢庵宗彭</strong>（たくあんそうほう）禅師にちなむという説が広く知られています。<br><br>
+        沢庵禅師は、質素な食事を大切にする禅の教えの中で、大根の漬物を工夫して作ったと伝えられています。<br><br>
+        蓮城院も同じ曹洞宗の寺院です。禅の精神を受け継ぎ、境内で丁寧に手作りしたたくあんを、どうぞ味わっていただけましたら幸いです。
+      </p>
+    </div>
+
+    <div class="trivia-card">
+      <h3>おいしい切り方のコツ</h3>
+      <p>
+        そのまま食べるなら<strong>5mm程度の厚さ</strong>がおすすめ。歯ごたえを楽しめます。<br>
+        料理に使う場合は、用途に合わせて<strong>みじん切り・細切り・輪切り</strong>に。<br>
+        斜めに薄く切ると、断面が大きくなって味がよく馴染みます。
+      </p>
+    </div>
+  </section>
+
+  <!-- ━━━ フッター ━━━ -->
+  <footer class="footer">
+    <div class="footer-crest">
+      <img src="images/蓮城院ロゴ1_背景透過.png" alt="蓮城院 寺紋" onerror="this.parentElement.style.display='none'">
+    </div>
+    <div class="footer-temple">曹洞宗　蓮城院</div>
+    <div class="footer-address">栃木県真岡市</div>
+    <div class="footer-event">愛と光の癒しマルシェ 2026</div>
+  </footer>
+
+</body>
+</html>
